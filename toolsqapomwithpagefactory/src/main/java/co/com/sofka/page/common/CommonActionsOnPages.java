@@ -100,7 +100,7 @@ public class CommonActionsOnPages extends BaseSikulix{
         return driver.findElement(locator).getText();
     }
 
-    protected void typeInto(By locator, CharSequence... keysToSend) throws IOException {
+    public void typeInto(By locator, CharSequence... keysToSend) throws IOException {
         driver.findElement(locator).sendKeys(keysToSend);
     }
 
@@ -157,11 +157,11 @@ public class CommonActionsOnPages extends BaseSikulix{
         jse.executeScript("arguments[0].scrollIntoView();", webElement);
     }
 
-    protected void clickOn(By locator){
+    public void clickOn(By locator){
         driver.findElement(locator).click();
     }
 
-    protected void clickOn(WebElement webElement){
+    public void clickOn(WebElement webElement){
         webElement.click();
     }
 
@@ -191,4 +191,15 @@ public class CommonActionsOnPages extends BaseSikulix{
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript(script);
     }
+
+    protected void javascriptExecutor(String script,WebElement element){
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript(script,element);
+    }
+    public void javascriptExecutor(String script,By localisador){
+        WebElement element = driver.findElement(localisador);
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript(script,element);
+    }
+
 }

@@ -12,7 +12,7 @@ public class WebUI {
     private static final String WEBDRIVER_CHROME_DRIVER = "webdriver.chrome.driver";
     private static final String WEBDRIVER_CHROME_DRIVER_PATH = "src/test/resources/driver/windows/chrome/chromedriver.exe";
 
-    private static final String DEMO_QA_URL = "https://demoqa.com/automation-practice-form";
+    private static final String DEMO_QA_URL = "https://opensource-demo.orangehrmlive.com/index.php/auth/login";
 
     protected WebDriver driver;
 

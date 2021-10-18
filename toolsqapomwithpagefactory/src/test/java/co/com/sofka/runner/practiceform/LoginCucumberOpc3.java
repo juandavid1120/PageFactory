@@ -1,4 +1,4 @@
-package co.com.sofka.runner.restassured.reqresin.login;
+package co.com.sofka.runner.practiceform;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -9,9 +9,10 @@ import org.junit.runner.RunWith;
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         publish = true,
         plugin = {"pretty", "html:target/cucumber-report/cucumber.html"},
-        features = {"src/test/resources/features/restassured/reqresin/login/login.feature"},
-        glue = {"co.com.sofka.stepdefinition.restassured.reqresin.login"},
+        features = {"src/test/resources/features/webui/practiceform/Login.feature"},
+        glue = {"co.com.sofka.stepdefinition.practiceform.opt3"},
         tags = "not @ignore"
 )
-public class LoginRunner {
+public class LoginCucumberOpc3 {
+
 }

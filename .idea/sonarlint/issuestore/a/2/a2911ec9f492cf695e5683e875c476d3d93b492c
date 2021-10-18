@@ -1,0 +1,16 @@
+
+V	java:S125."<This block of commented-out lines of code should be removed.(¾ë‰™ùÿÿÿÿ
+R	java:S125”"<This block of commented-out lines of code should be removed.(åÍì
+R	java:S125®"<This block of commented-out lines of code should be removed.(¿Ğ¹¨
+Q	java:S125¿"<This block of commented-out lines of code should be removed.(á˜‚z
+=
+java:S1481Í"&Remove this unused "j" local variable.(èê»
+W	java:S125ç"<This block of commented-out lines of code should be removed.(Í‹Åèÿÿÿÿÿ
+ˆ
+java:S1130ÿ"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ïøàøÿÿÿÿ
+R	java:S125"<This block of commented-out lines of code should be removed.(å¾õÍ
+W	java:S125ˆ"<This block of commented-out lines of code should be removed.(ÿ•ô€ùÿÿÿÿ
+N
+java:S1068f"8Remove this unused "SELECT_PICTURE_PATCH" private field.(âşñˆ
+v
+java:S1488í"_Immediately return this expression instead of assigning it to the temporary variable "allRows".(åà‘©

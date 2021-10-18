@@ -1,0 +1,19 @@
+
+V
+java:S1128	";Remove this unused import 'org.openqa.selenium.WebElement'.(‰ïµ”þÿÿÿÿ
+L
+java:S1068$"6Remove this unused "selectFileToUpload" private field.(ºûŽÎ
+O
+java:S1068,"9Remove this unused "assertionStudentEmail" private field.(¶¾ëü
+Z
+java:S1068/"?Remove this unused "assertionStudentDateOfBirth" private field.(ü†ì‘ûÿÿÿÿ
+P
+java:S10680"5Remove this unused "assertionSubjects" private field.(ÝÂÓ®þÿÿÿÿ
+J
+java:S10681"4Remove this unused "assertionHobbies" private field.(Ö÷Çë
+J
+java:S10682"4Remove this unused "assertionPicture" private field.(¢Ù÷ð
+J
+java:S10683"4Remove this unused "assertionAddress" private field.(â½üÊ
+O
+java:S10684"9Remove this unused "assertionStateAndCity" private field.(¾ïÛ‘

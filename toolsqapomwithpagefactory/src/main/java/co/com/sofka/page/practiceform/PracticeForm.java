@@ -4,11 +4,16 @@ import co.com.sofka.model.practiceform.PracticeFormModel;
 import co.com.sofka.page.common.CommonActionsOnPages;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
+
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 import static io.cucumber.messages.internal.com.google.common.base.StandardSystemProperty.USER_DIR;
 
@@ -17,6 +22,7 @@ public class PracticeForm extends CommonActionsOnPages {
     private static final Logger LOGGER = Logger.getLogger(PracticeForm.class);
     private PracticeFormModel practiceFormModel;
     private static final String MODEL_NULL_MESSAGE = "El modelo del formulario es nulo.";
+    WebDriver driver;
 
     //For input test cases.
     @FindBy(id = "addCandidate_firstName")
@@ -33,7 +39,7 @@ public class PracticeForm extends CommonActionsOnPages {
 
     @FindBy(id = "addCandidate_email")
     @CacheLookup
-    private  WebElement candidateEmail;
+    private WebElement candidateEmail;
 
     /*@FindBy(xpath = "//*[@id=\"genterWrapper\"]/div[2]/div[1]/label")
     @CacheLookup
@@ -55,7 +61,7 @@ public class PracticeForm extends CommonActionsOnPages {
     @CacheLookup
     private WebElement jobVacancy;
 
-    @FindBy(id = "addCandidate_resume")
+    @FindBy(xpath = "//*[@id=\"frmAddCandidate\"]/fieldset/ol[2]/li[2]/label[1]")
     @CacheLookup
     private WebElement resumeCandidate;
 
@@ -79,53 +85,21 @@ public class PracticeForm extends CommonActionsOnPages {
     @FindBy(id = "btnSave")
     @CacheLookup
     private WebElement btnSave;
-
-    /*//For Assertions test case.
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[1]/td[2]")
+    @FindBy(id = "btnBack")
     @CacheLookup
-    private WebElement assertionStudentName;
+    private WebElement btnBack;
 
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[2]/td[2]")
+    //For Assertions test case.
+    @FindBy(id = "candidateSearch_candidateName")
     @CacheLookup
-    private WebElement assertionStudentEmail;
+    private WebElement assertionUserName ;
 
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[3]/td[2]")
-    @CacheLookup
-    private WebElement assertionGender;
-
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[4]/td[2]")
-    @CacheLookup
-    private WebElement assertionMobile;
-
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[5]/td[2]")
-    @CacheLookup
-    private WebElement assertionStudentDateOfBirth;
-
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[6]/td[2]")
-    @CacheLookup
-    private WebElement assertionSubjects;
-
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[7]/td[2]")
-    @CacheLookup
-    private WebElement assertionHobbies;
-
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[8]/td[2]")
-    @CacheLookup
-    private WebElement assertionPicture;
-
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[9]/td[2]")
-    @CacheLookup
-    private WebElement assertionAddress;
-
-    @FindBy(xpath = "/html/body/div[4]/div/div/div[2]/div/table/tbody/tr[10]/td[2]")
-    @CacheLookup
-    private WebElement assertionStateAndCity;*/
 
     //Sikulix elements.
-    private static final String ATTACHMENT_FILE_PATCH = USER_DIR.value() + "\\src\\test\\resources\\images\\practiceform\\happy.jpg";
+    private static final String ATTACHMENT_FILE_PATCH = USER_DIR.value() + "\\src\\test\\resources\\images\\practiceform\\resume.pdf";
 
     private static final String PAGE_BASE_PATCH = USER_DIR.value() + "\\src\\main\\resources\\page\\practiceform\\";
-    private static final String SELECT_PICTURE_PATCH = PAGE_BASE_PATCH + "selectPicture.PNG";
+    private static final String SELECT_PICTURE_PATCH = PAGE_BASE_PATCH + "Seleccionar.PNG";
     private static final String SELECT_OPEN_PATCH = PAGE_BASE_PATCH + "openWindows.PNG";
     private static final String FILE_NAME_TEXT_BOX_PATCH = PAGE_BASE_PATCH + "fileNameWindows.PNG";
 
@@ -134,6 +108,7 @@ public class PracticeForm extends CommonActionsOnPages {
         super(driver);
         pageFactoryInitElement(driver, this);
         this.practiceFormModel = practiceFormModel;
+        this.driver = driver;
     }
 
     public PracticeForm(WebDriver driver, PracticeFormModel practiceFormModel, int secondsForExplicitWait) {
@@ -141,18 +116,19 @@ public class PracticeForm extends CommonActionsOnPages {
         super(driver, secondsForExplicitWait);
         pageFactoryInitElement(driver, this);
 
-        if(practiceFormModel == null)
+        if (practiceFormModel == null)
             LOGGER.warn(MODEL_NULL_MESSAGE);
 
         this.practiceFormModel = practiceFormModel;
+        this.driver = driver;
 
     }
 
     //Page functions.
 
 
-    public void fillStudentFormUsingAllFields(){
-        try{
+    public void fillStudentFormUsingAllFields() {
+        try {
             scrollTo(firsName);
             withExplicitWaitClear(firsName);
             withExplicitWaitTypeInto(firsName, practiceFormModel.getName());
@@ -192,7 +168,12 @@ public class PracticeForm extends CommonActionsOnPages {
             withExplicitWaitClear(contactNo);
             withExplicitWaitTypeInto(contactNo, practiceFormModel.getContactNo());
 
-            select(jobVacancy,practiceFormModel.getJobVacancy().getValue());
+            select(jobVacancy, practiceFormModel.getJobVacancy().getValue());
+
+            javascriptExecutor("arguments[0].click();",resumeCandidate);
+            //clickOn(SELECT_PICTURE_PATCH);
+            insertInto(FILE_NAME_TEXT_BOX_PATCH, ATTACHMENT_FILE_PATCH);
+            clickOn(SELECT_OPEN_PATCH);
 
             scrollTo(keyWords);
             withExplicitWaitClear(keyWords);
@@ -207,25 +188,77 @@ public class PracticeForm extends CommonActionsOnPages {
 
             clickOn(By.xpath("//option[. = '" + practiceFormModel.getYear() + "']"));
             clickOn(By.xpath("//option[. = '" + practiceFormModel.getMonth() + "']"));
-            clickOn(By.xpath("//div[contains(@aria-label,'" + practiceFormModel.getDay() + "') and contains(@aria-label, '" + practiceFormModel.getMonth() + "')]"));
+            // clickOn(By.xpath("//div[contains(@aria-label,'" + practiceFormModel.getDay() + "') and contains(@aria-label, '" + practiceFormModel.getMonth() + "')]"));
+
+            DateFormat dateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
+            DateFormat dateFormat3 = new SimpleDateFormat("dd");
+            String strFecha = practiceFormModel.getYear() + "-09" + "-" + practiceFormModel.getDay();
+            Date date2 = dateFormat2.parse(strFecha);
+
+            String today = dateFormat3.format(date2);
+
+            List<WebElement> allRows = driver.findElements(By.tagName("tr"));
+
+            int i = 0;
+            for (WebElement row : allRows) {
+                List<WebElement> cells = row.findElements(By.tagName("td"));
+                int j = 0;
+                for (WebElement cell : cells) {
+                    if (i != 0 && cell.getText().equalsIgnoreCase(today)) {
+                        cell.click();
+                    }
+                    j++;
+                }
+                i++;
+            }
 
 
-            clickOn(SELECT_PICTURE_PATCH);
-            insertInto(FILE_NAME_TEXT_BOX_PATCH, ATTACHMENT_FILE_PATCH);
-            clickOn(SELECT_OPEN_PATCH);
 
             scrollTo(consentToKeepData);
-            withExplicitWaitClear(consentToKeepData);
-            withExplicitWaitTypeInto(consentToKeepData, practiceFormModel.getConsentData());
-
+            clickOn(consentToKeepData);
 
 
             scrollTo(btnSave);
             clickOn(btnSave);
+            clickOn(btnBack);
 
-        } catch (Exception exception){
+        } catch (Exception exception) {
             LOGGER.warn(exception.getMessage());
         }
+    }
+
+    /*public void asertionsTest() {//para traer datos
+        assertionUserName = driver.findElement(By.id("candidateSearch_candidateName"));
+
+    }*/
+
+    public List<WebElement> getResultTable() {
+        WebElement table = findElement(By.id("resultTable"));
+        List<WebElement> allRows = table.findElements(By.tagName("tr"));
+        return allRows;
+    }
+
+    public boolean validateUsersFilteredByRoles(List<WebElement> allRows, String candidato) {
+        for (WebElement row : allRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            int i = 0;
+            for (WebElement cell : cells) {
+                if (i == 2 && cell.getText().equalsIgnoreCase(candidato)) {
+                    return true;
+                }
+                i++;
+            }
+        }
+        return false;
+    }
+
+    public void searchUserAdd() throws IOException {
+
+        //scrollTo(assertionUserName);
+        withExplicitWaitClear(assertionUserName);
+        withExplicitWaitTypeInto(assertionUserName, practiceFormModel.getName() + practiceFormModel.getLastName());
+
+
     }
 
    /* public List<String> isRegistrationDone() {

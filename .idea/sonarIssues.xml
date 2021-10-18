@@ -3,7 +3,22 @@
   <component name="issues">
     <option name="index">
       <map>
+        <entry key="/a.dummy">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/.gitignore">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/toolsqapom/src/test/java/co/com/sofka/runner/practiceform/PracticeFormCucumberOpt1Test.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/toolsqapomwithpagefactory/src/main/java/co/com/sofka/model/practiceform/Page.java">
           <value>
             <set />
           </value>
@@ -14,6 +29,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/toolsqapomwithpagefactory/src/main/java/co/com/sofka/page/common/CommonActionsOnPages.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/toolsqapomwithpagefactory/src/main/java/co/com/sofka/page/practiceform/LoginPage.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/toolsqapomwithpagefactory/src/main/java/co/com/sofka/page/practiceform/PageLogin.java">
           <value>
             <set />
           </value>
@@ -33,6 +58,16 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/toolsqapomwithpagefactory/src/main/java/co/com/sofka/util/Month.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/toolsqapomwithpagefactory/src/test/java/co/com/sofka/runner/practiceform/LoginCucumberOpc3.java">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/toolsqapomwithpagefactory/src/test/java/co/com/sofka/runner/practiceform/PracticeFormTest.java">
           <value>
             <set />
@@ -43,7 +78,42 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/toolsqapomwithpagefactory/src/test/java/co/com/sofka/stepdefinition/practiceform/opt3/LoginCucumber.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/toolsqapomwithpagefactory/src/test/java/co/com/sofka/stepdefinition/practiceform/opt3/a.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/toolsqapomwithpagefactory/src/test/java/co/com/sofka/stepdefinition/setup/webui/WebUI.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/toolsqapomwithpagefactory/src/test/resources/features/webui/practiceform/login.feature">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/toolsqapomwithpagefactory/src/test/resources/features/webui/practiceform/practiceForm.feature">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../automationtesting1/toolsqapom/src/main/java/co/com/sofka/model/practiceform/PageLoginModel.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../automationtesting1/toolsqapom/src/main/java/co/com/sofka/page/practiceform/PracticeForm.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/../automationtesting1/toolsqapom/src/test/java/co/com/sofka/stepdefinition/practiceform/opt1/PracticeFormCucumberOpt1StepDefinition.java">
           <value>
             <set />
           </value>
